@@ -4,26 +4,13 @@
 
 ## Introduction & Basics
 
-MSBuilds is a;
+MSBuild is a software building tool that handles all kinds of tasks related with build operation. As a dot.net developer it gets benefit to know MSBUild. In deed its an interpreted programming language expressed as in XML. MSBuild XML file interpreted by MSBuild.exe. If dot.net framework installed MSBuild.exe comes with it. Can be invoked by command line and also with Visual Studio (F5, CTRL + F5), and also inside TFS.
 
-* A software building tool,
-
-* Needed to know as a dot.net developer.
-
-* It gets benefit to know MSBUild. 
-
-* An interpreted programming language expressed as in XML
-
-MSBuild XML file interpreted by MSBuild.exe
-
-* If dot.net framework installed you have MSBuild.exe
-
-* Can be invoked by command line and also with Visual Studio (F5, CTRL + F5), and also inside TFS 
+Beside those;
 
 * MSBuid capabilities can be extend beside building and executing related tasks.
 
 * Can be used as a general purpose automation tool.
-
 
 ### Hello World! :earth_africa:
 
