@@ -29,11 +29,12 @@ MSBuild XML file interpreted by MSBuild.exe
 
 Root element for an msbuild file must be *Project* and xml namesspace is *http://schemas.microsoft.com/developer/msbuild/2003*   
 
+MSBuild File: [hello-world.msbuild](https://github.com/karanba/MSBuild-Workspace/blob/01-Basics/src/hello-world.msbuild)
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Target name="hello-world">
-        <Message text="Hello, World!" />>
+    <Target Name="hello-world">
+        <Message Text="Hello, World!" />>
     </Target>
 </Project>
 ```
@@ -79,6 +80,30 @@ TODO: Add Path
 
 ### Targets
 
+There can be multiple targets on an MSBuild file. If there is more than one task first one will be run. It can be changed by passing the parameter _/target: \<target name\>_ or like _/t: \<target name\>_
+
+```powershell
+msbuild .\src\targets.msbuild /target:OtherTask
+```
+
+Also we can use _DefaultTargets_ attribute for _Project_ element like below;
+
+MSBuild File: [targets.msbuild](https://github.com/karanba/MSBuild-Workspace/blob/01-Basics/src/targets.msbuild)
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="OtherTask" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Target Name="HelloWorld">
+        <Message Text="Hello, World!" />
+    </Target>
+    <Target Name="OtherTask">
+        <Message Text="Do smth else" />
+    </Target>
+</Project>
+```
+If you both have  _DefaultTargets_ atrribute inside file ans alos use _/target:\<Task Name\>_ together, command line parameter will ovewrite _DefaultTargets_ attribute.
+
+
+### Response (RSP) Files
 
 
 
