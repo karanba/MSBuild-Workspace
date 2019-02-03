@@ -21,7 +21,7 @@ MSBuild File: [hello-world.msbuild](https://github.com/karanba/MSBuild-Workspace
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <Target Name="hello-world">
-        <Message Text="Hello, World!" />>
+        <Message Text="Hello, World!" />
     </Target>
 </Project>
 ```
