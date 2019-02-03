@@ -1,8 +1,8 @@
-## MSBUILD
+# MSBUILD
 
 
 
-### Introduction & Basics
+## Introduction & Basics
 
 MSBuilds is a;
 
@@ -25,7 +25,7 @@ MSBuild XML file interpreted by MSBuild.exe
 * Can be used as a general purpose automation tool.
 
 
-### Hello World
+### Hello World! :earth_africa:
 
 Root element for an msbuild file must be *Project* and xml namesspace is *http://schemas.microsoft.com/developer/msbuild/2003*   
 
@@ -38,19 +38,49 @@ Root element for an msbuild file must be *Project* and xml namesspace is *http:/
 </Project>
 ```
 
-To run this file :runner:; 
+:runner: _to run this file_; 
 
 ```powershell
 msbuild .\src\hello-world.msbuild
 ```
-** Output: **
+:scroll: _output:_
 
 ```powershell
+
+Project "C:\repo\GitHub\MSBuild-Workspace\src\hello-world.msbuild" on node 1 (default targets).
+HelloWorld:
+  Hello, World!
+Done Building Project "C:\repo\GitHub\MSBuild-Workspace\src\hello-world.msbuild" (default targets).
+
 
 Build succeeded.
     0 Warning(s)
     0 Error(s)
 ```
+
+### Where is MSBuild.exe :mag: 
+
+Inside .net framework folder;
+```powershell
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe
+```
+Also _msbuild.exe.config_,  _MSBuild.rsp_ file and _MSBuild_ folder is there which holds _xsd_ files that define the structure inside msbuild xml file.
+
+``` bash
+ MSBUild /
+ ---- Microsoft.Build.Commontypes.xsd
+ ---- Microsoft.Build.Core.xsd
+```
+
+Inside Visual Studio Installation folder;
+```powershell
+TODO: Add Path
+```
+
+### Targets
+
+
+
 
 ### Support or Contact
 
