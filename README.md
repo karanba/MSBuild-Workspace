@@ -27,9 +27,29 @@ MSBuild XML file interpreted by MSBuild.exe
 
 ### Hello World
 
+Root element for an msbuild file must be *Project* and xml namesspace is *http://schemas.microsoft.com/developer/msbuild/2003*   
 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Target name="hello-world">
+        <Message text="Hello, World!" />>
+    </Target>
+</Project>
+```
 
-```markdown
+To run this file :runner:; 
+
+```powershell
+msbuild .\src\hello-world.msbuild
+```
+** Output: **
+
+```powershell
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
 ```
 
 ### Support or Contact
