@@ -109,9 +109,40 @@ MSBuild.exe .\src\targets.msbuild @src\targets.rsp
 
 A task is like a method or a function call. It's a .NET type gets invoked by the MSBuild runtime when it's encountered as our MSBuild script is executed.
 
-We can check object browser for Task types.
+We can check object browser for Task types. They drives from _ITask_ interface
 ![Microsoft.Build.Tasks - Object Browser](./src/image/ObjectBrowser-Tasks.png)
 
+As you can see there is an _Importance_ property beside _Text_ property which we can use to set the verbosity of the message.
+
+```xml
+...
+    <Target Name="HelloWorld">
+        <Message Text="Hello, World!" Importance="high" />
+    </Target>
+...
+```
+
+When we check the output 'Hello, World!' is in differece color. If we make _Importance_ level as _low_ message will not seen.
+
+
+## Logging Verbosity
+
+We can set verbosity level with the _/verbosity_ parameter or just _/v:\<verbosity level\>_
+
+* minimal
+* _normal_
+* _detailed_
+* _diag_ or _diagnostic_
+
+```powershell
+MSBuild.exe .\src\targets-verbosity.msbuild @src\targets.rsp /v:normal
+
+```
+
+```powershell
+MSBuild.exe .\src\targets-verbosity.msbuild @src\targets.rsp /v:normal
+
+```
 
 ### Support or Contact
 
