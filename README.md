@@ -108,7 +108,9 @@ MSBuild.exe .\src\targets.msbuild @src\targets.rsp
 ## Tasks
 
 A task is like a method or a function call. It's a .NET type gets invoked by the MSBuild runtime when it's encountered as our MSBuild script is executed.
-[Microsoft.Build.Tasks - Object Browser](https://github.com/karanba/MSBuild-Workspace/blob/01-Basics/src/image/ObjectBrowser-Tasks.png)
+
+We can check object browser for Task types.
+![Microsoft.Build.Tasks - Object Browser](./src/image/ObjectBrowser-Tasks.png)
 
 
 ### Support or Contact
