@@ -1,8 +1,8 @@
-# MSBUILD
+# MSBUILD 
 
 
 
-## Introduction & Basics
+# Introduction & Basics
 
 MSBuild is a software building tool that handles all kinds of tasks related with build operation. As a dot.net developer it gets benefit to know MSBUild. In deed its an interpreted programming language expressed as in XML. MSBuild XML file interpreted by MSBuild.exe. If dot.net framework installed MSBuild.exe comes with it. Can be invoked by command line and also with Visual Studio (F5, CTRL + F5), and also inside TFS.
 
@@ -12,7 +12,7 @@ Beside those;
 
 * Can be used as a general purpose automation tool.
 
-### Hello World! :earth_africa:
+## Hello World! :earth_africa:
 
 Root element for an msbuild file must be *Project* and xml namesspace is *http://schemas.microsoft.com/developer/msbuild/2003*   
 
@@ -46,7 +46,7 @@ Build succeeded.
     0 Error(s)
 ```
 
-### Where is MSBuild.exe :mag: 
+## Where is MSBuild.exe :mag: 
 
 Inside .net framework folder;
 ```powershell
@@ -65,7 +65,7 @@ Inside Visual Studio Installation folder;
 TODO: Add Path
 ```
 
-### Targets
+## Targets
 
 There can be multiple targets on an MSBuild file. If there is more than one task first one will be run. It can be changed by passing the parameter _/target: \<target name\>_ or like _/t: \<target name\>_
 
@@ -90,8 +90,25 @@ MSBuild File: [targets.msbuild](https://github.com/karanba/MSBuild-Workspace/blo
 If you both have  _DefaultTargets_ atrribute inside file ans alos use _/target:\<Task Name\>_ together, command line parameter will ovewrite _DefaultTargets_ attribute.
 
 
-### Response (RSP) Files
+## Response (RSP) Files
 
+One think you'll find using MSBuild you'are going to end up needing to use lots of command line arguments. RSP is a handy way of giving command line arguments.
+
+Response File: [targets.rsp](https://github.com/karanba/MSBuild-Workspace/blob/01-Basics/src/targets.rsp)
+```bash
+/target:OtherTask
+```
+
+To run MSBuild with .rsp file we can use following syntax
+
+```powershell
+MSBuild.exe .\src\targets.msbuild @src\targets.rsp
+```
+
+## Tasks
+
+A task is like a method or a function call. It's a .NET type gets invoked by the MSBuild runtime when it's encountered as our MSBuild script is executed.
+[Microsoft.Build.Tasks - Object Browser](https://github.com/karanba/MSBuild-Workspace/blob/01-Basics/src/images/ObjectBrowser-Tasks.png)
 
 
 ### Support or Contact
