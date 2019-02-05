@@ -140,9 +140,12 @@ MSBuild.exe .\src\targets-verbosity.msbuild @src\targets.rsp /v:normal
 ```
 
 ```powershell
-MSBuild.exe .\src\targets-verbosity.msbuild @src\targets.rsp /v:normal
+MSBuild.exe .\src\targets-verbosity.msbuild @src\targets.rsp /v:diag
 
 ```
+
+
+With _diagnostic_ you will get lots of statictic information beside detailed messages.
 
 ### Support or Contact
 
