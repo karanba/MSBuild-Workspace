@@ -171,8 +171,143 @@ MSBuild File: [property.msbuild](https://github.com/karanba/MSBuild-Workspace/bl
 
 To run and inject parameter here is the usage
 ```powershell
+# command
 MSBuild.exe .\src\property.msbuild /v:minimal /p:Name=Kaya
 
+
+# output
+Microsoft (R) Build Engine version 15.6.85.37198 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Hello, Kaya!
+  Hello, Kaya Farkli!
+```
+
+Empty paramters doesd not cause error, if the usage is not desire to reah a resource.
+
+
+
+
+## Reserved Properties
+
+MSBuild provides a set of predefined properties that store information about the project file and the MSBuild binaries. There is a large list of reserved properties [MSBuild reserved and well-known properties](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-reserved-and-well-known-properties?view=vs-2017) 
+
+
+
+MSBuild File: [reserved-property.msbuild](https://github.com/karanba/MSBuild-Workspace/blob/01-Basics/src/reserved-.msbuild)
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="ReservedProps" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Name>Ali</Name>
+        <FullName>$(Name) Farklı</FullName>
+    </PropertyGroup>
+
+    <Target Name="ReservedProps">
+        <Message Text="MSBuild Project Directory: $(MSBuildProjectDirectory)!" Importance="high"/>
+    </Target>
+</Project>
+```
+
+Here is the command and output
+```powershell
+# command
+MSBuild.exe .\src\reserved-properties.msbuild /v:minimal
+
+
+# output
+Microsoft (R) Build Engine version 15.6.85.37198 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  MSBuild Project Directory: E:\repo\GitHub\MSBuild-Workspace\src!
+```
+
+Also when any command run with _verbosity_ level _diagnostic_ we can get all the properties MSBuild knows about.
+
+
+## Items
+
+We can thinks items as an array like property. In MSBuild, an item is a named reference to one or more files. Items contain metadata such as file names, paths, and version numbers. All project types in Visual Studio have several items in common. These items are defined in the file Microsoft.Build.CommonTypes.xsd
+
+Here is a sample to list txt files under _files_ folder. Also we can reach each file metadata.
+
+
+MSBuild File: [items.msbuild](https://github.com/karanba/MSBuild-Workspace/blob/01-Basics/src/items.msbuild)
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="ListFiles" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <FilesPath>$(MSBuildProjectDirectory)\files\*.txt</FilesPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Files Include="$(FilesPath)"></Files>
+    </ItemGroup>
+
+    <Target Name="ListFiles">
+        <Message Text="@(Files)" Importance="high"/>
+        <Message Text="@(Files->'%(ModifiedTime)')" Importance="high"/>
+    </Target>
+</Project>
+```
+
+Here is the command and output
+```powershell
+# command
+MSBuild.exe .\src\items.msbuild /v:minimal
+
+
+# output
+Microsoft (R) Build Engine version 15.6.85.37198 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  E:\repo\GitHub\MSBuild-Workspace\src\files\a.txt;E:\repo\GitHub\MSBuild-Workspace\src\files\b.txt;E:\repo\GitHub\MSBuild-Workspace\src\files\c
+```
+
+List of all the common project items can be found here:
+[Common MSBuild project items](https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-items?view=vs-2017)
+
+Also we can add custom items like below;
+
+MSBuild File: [custom-items.msbuild](https://github.com/karanba/MSBuild-Workspace/blob/01-Basics/src/custom-items.msbuild)
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="ListFiles" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <FilesPath>$(MSBuildProjectDirectory)\files\*.txt</FilesPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Country Include="Turkey">
+            <Capital>Ankara</Capital>
+        </Country>
+        <Country Include="France">
+            <Capital>Paris</Capital>
+        </Country>
+        <Country Include="Mexico">
+            <Capital>Mexico City</Capital>
+        </Country>
+    </ItemGroup>
+
+    <Target Name="ListFiles">
+        <Message Text="@(Country)" Importance="high"/>        
+        <Message Text="@(Country->'%(Capital)')" Importance="high"/>        
+    </Target>
+</Project>
+```
+
+Here is the command and output
+```powershell
+# command
+MSBuild.exe .\src\custom-items.msbuild /v:minimal
+
+
+# output
+Microsoft (R) Build Engine version 15.6.85.37198 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Turkey;France;Mexico
+  Ankara;Paris;Mexico City
 ```
 
 ### Support or Contact

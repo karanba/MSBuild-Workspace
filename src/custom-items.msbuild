@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="ListFiles" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <FilesPath>$(MSBuildProjectDirectory)\files\*.txt</FilesPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Country Include="Turkey">
+            <Capital>Ankara</Capital>
+        </Country>
+        <Country Include="France">
+            <Capital>Paris</Capital>
+        </Country>
+        <Country Include="Mexico">
+            <Capital>Mexico City</Capital>
+        </Country>
+    </ItemGroup>
+
+    <Target Name="ListFiles">
+        <Message Text="@(Country)" Importance="high"/>        
+        <Message Text="@(Country->'%(Capital)')" Importance="high"/>        
+    </Target>
+</Project>

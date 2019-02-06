@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="ListFiles" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <FilesPath>$(MSBuildProjectDirectory)\files\*.txt</FilesPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Files Include="$(FilesPath)"></Files>
+    </ItemGroup>
+
+    <Target Name="ListFiles">
+        <Message Text="@(Files)" Importance="high"/>
+        <Message Text="@(Files->'%(ModifiedTime)')" Importance="high"/>
+    </Target>
+</Project>
