@@ -147,6 +147,34 @@ MSBuild.exe .\src\targets-verbosity.msbuild @src\targets.rsp /v:diag
 
 With _diagnostic_ you will get lots of statictic information beside detailed messages.
 
+## Properties
+
+To Store temporary data properties comes in to play. We use _PropertyGroup_ to declare a property. Here is a sample to add a property named as _'Name'_.
+
+MSBuild File: [property.msbuild](https://github.com/karanba/MSBuild-Workspace/blob/01-Basics/src/property.msbuild)
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="HelloWorld;HelloWorldAgain" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Name>Ali</Name>
+        <FullName>$(Name) Farklı</FullName>
+    </PropertyGroup>
+    <Target Name="HelloWorld">
+        <Message Text="Hello, $(Name)!" Importance="high" />
+    </Target>
+
+    <Target Name="HelloWorldAgain">
+        <Message Text="Hello, $(FullName)!" Importance="high"/>
+    </Target>
+</Project>
+```
+
+To run and inject parameter here is the usage
+```powershell
+MSBuild.exe .\src\property.msbuild /v:minimal /p:Name=Kaya
+
+```
+
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
