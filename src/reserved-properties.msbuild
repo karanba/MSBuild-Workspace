@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="ReservedProps" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Name>Ali</Name>
+        <FullName>$(Name) Farklı</FullName>
+    </PropertyGroup>
+
+    <Target Name="ReservedProps">
+        <Message Text="MSBuild Project Directory: $(MSBuildProjectDirectory)!" Importance="high"/>
+    </Target>
+
+    <Target Name="HelloWorld">
+        <Message Text="Hello, $(Name)!" Importance="high" />
+    </Target>
+
+    <Target Name="HelloWorldAgain">
+        <Message Text="Hello, $(FullName)!" Importance="high"/>
+    </Target>
+</Project>
