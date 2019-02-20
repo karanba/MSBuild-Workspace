@@ -1,3 +1,7 @@
 theme: jekyll-theme-cayman
 title: MSBuild Notes
 description: Notes and examples on MSBUILD
+repository: karanba/MSBuild-Workspace
+
+plugins:
+  - jemoji
